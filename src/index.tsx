@@ -159,7 +159,7 @@ export default class VirtualList extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     const {scrollOffset, scrollToIndex} = this.props;
-    window.addEventListener('scroll', this.handleScroll, {
+    this.rootNode.addEventListener('scroll', this.handleScroll, {
       passive: true,
     });
 
@@ -239,7 +239,7 @@ export default class VirtualList extends React.PureComponent<Props, State> {
   }
 
   componentWillUnmount() {
-    this.rootNode.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   scrollTo(value: number) {

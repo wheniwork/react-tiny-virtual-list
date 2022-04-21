@@ -354,7 +354,7 @@ var VirtualList = /** @class */function (_super) {
         var _a = this.props,
             scrollOffset = _a.scrollOffset,
             scrollToIndex = _a.scrollToIndex;
-        window.addEventListener('scroll', this.handleScroll, {
+        this.rootNode.addEventListener('scroll', this.handleScroll, {
             passive: true
         });
         if (scrollOffset != null) {
@@ -408,7 +408,7 @@ var VirtualList = /** @class */function (_super) {
         }
     };
     VirtualList.prototype.componentWillUnmount = function () {
-        this.rootNode.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleScroll);
     };
     VirtualList.prototype.scrollTo = function (value) {
         var _a = this.props.scrollDirection,
